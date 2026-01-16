@@ -23,3 +23,7 @@ button:hover {
   background-color: green;
   color: #999;
 }
+
+div {
+  width: 100%;
+}

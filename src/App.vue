@@ -13,6 +13,22 @@ function addTask(newTask: string) {
     done: false,
   });
 }
+
+function toggleDone(id: string) {
+  const task = todos.value.find((task) => task.id === id);
+
+  if (task) {
+    task.done = !task.done;
+  }
+}
+
+function removeTask(id: string) {
+  const index = todos.value.findIndex((task) => task.id === id);
+
+  if (index != -1) {
+    todos.value.splice(index, 1);
+  }
+}
 </script>
 
 <template>
@@ -24,7 +40,7 @@ function addTask(newTask: string) {
       <h3 v-else>0 / {{ todos.length }} tasks completed</h3>
     </div>
 
-    <TodoList :todos />
+    <TodoList :todos @toggle-done="toggleDone" @remove-task="removeTask" />
   </main>
 </template>
 

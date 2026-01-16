@@ -19,8 +19,8 @@ function formSubmitted() {
 </script>
 
 <template>
-  <div class="form-container">
-    <form @submit.prevent="formSubmitted" class="form">
+  <div>
+    <form @submit.prevent="formSubmitted" class="form-container">
       <label>
         New Task
         <input
@@ -30,10 +30,11 @@ function formSubmitted() {
           @input="error = ''"
         />
       </label>
-
-      <button>Add</button>
+      <p v-if="error">{{ error }}</p>
+      <div class="button-container">
+        <button>Add</button>
+      </div>
     </form>
-    <p v-if="error">{{ error }}</p>
   </div>
 </template>
 
@@ -56,12 +57,23 @@ label {
 input {
   background-color: transparent;
   border: 1px solid #999;
-  padding: 6px 12px;
-  width: 400px;
+  padding: 8px 12px;
+  width: 500px;
   color: #bbb;
+  font-size: 1.5rem;
 }
 
 p {
   color: red;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.button-container button {
+  margin: 10px 90px;
 }
 </style>
